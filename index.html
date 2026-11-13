@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Operación Extracción | T3 FPS</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}
+  </script>
+</head>
+<body>
+  <div id="scene"></div>
+  <div id="crosshair">+</div>
+  <header id="hudTop" class="hud hidden"><div><b>OPERACIÓN EXTRACCIÓN</b><small id="stage">01 · CALLES ABANDONADAS</small></div><span id="distance">EXTRACCIÓN: 120 m</span></header>
+  <footer id="hudBottom" class="hud hidden">
+    <span>ESTADO: <b id="health">VIVO</b></span>
+    <span>ZOMBIS: <b id="kills">0/8</b></span>
+    <span>CAJAS: <b id="pickups">0/5</b></span>
+    <span><b id="weapon">RIFLE</b> · BALAS: <b id="ammo">16</b></span>
+  </footer>
+  <div id="notice" role="status"></div>
+  <div id="debug" class="hidden"></div>
+  <div id="dpad" class="hidden" aria-label="Controles alternativos">
+    <button data-move="left" aria-label="Izquierda">◀</button>
+    <div><button data-move="forward" aria-label="Adelante">▲</button><button data-move="back" aria-label="Atrás">▼</button></div>
+    <button data-move="right" aria-label="Derecha">▶</button>
+  </div>
+  <div id="overlay"><div class="panel">
+    <div class="eyebrow">EVALUACIÓN T3 · FPS 3D</div>
+    <h1 id="title">OPERACIÓN EXTRACCIÓN</h1>
+    <p id="description">Sobrevive a la ciudad infectada, administra tus balas y alcanza la salida verde.</p>
+    <div class="instructions"><b>W A S D</b> Moverse · <b>MOUSE</b> Mirar · <b>CLIC</b> Disparar<br><b>1 / 2</b> Cambiar arma · <b>SHIFT</b> Correr · <b>Q / E</b> Girar</div>
+    <button id="start" type="button">INICIAR MISIÓN</button>
+    <p id="status">Preparando modelos GLB…</p>
+  </div></div>
+  <script>
+    addEventListener('error', e=>{const status=document.getElementById('status');if(status){status.textContent='Error: '+e.message+'. Revisa Internet y ejecuta con Live Server.';status.style.color='#ffad9f';}});
+    addEventListener('unhandledrejection',e=>{const status=document.getElementById('status');if(status){status.textContent='Error: '+String(e.reason)+'. Abre F12 > Consola.';status.style.color='#ffad9f';}});
+    setTimeout(()=>{if(!window.GAME_READY){const status=document.getElementById('status');if(status)status.textContent='Si no inicia, abre con Live Server y revisa la conexión a Internet.';}},12000);
+  </script>
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>
